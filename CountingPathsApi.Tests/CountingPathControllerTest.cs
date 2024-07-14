@@ -30,14 +30,13 @@ namespace CountingPathsApi.Tests
         public async Task GetPaths_ValidInput_ReturnsOk()
         {
             // Arrange
-            var request = new CoordinateRequest { X = 2, Y = 2 };
-            var query = new GetPathsQueryRequest(request);
-            var response = new PathResponse(); 
+            var request = new CalculatePathsRequest { X = 2, Y = 2 };
+            var response = new CalculatePathsResponse(); 
 
-            _mediatorMock.Setup(m => m.Send(query, CancellationToken.None)).ReturnsAsync(response);
+            _mediatorMock.Setup(m => m.Send(request, CancellationToken.None)).ReturnsAsync(response);
 
             // Act
-            var result = await _controller.GetPaths(request);
+            var result = await _controller.CalculatePaths(request);
 
             // Assert
             Assert.IsInstanceOf<OkObjectResult>(result.Result);
@@ -47,10 +46,10 @@ namespace CountingPathsApi.Tests
         public async Task GetPaths_InvalidInput_NegativeX_ReturnsBadRequest()
         {
             // Arrange
-            var request = new CoordinateRequest { X = -1, Y = 5 };
+            var request = new CalculatePathsRequest { X = -1, Y = 5 };
 
             // Act
-            var result = await _controller.GetPaths(request);
+            var result = await _controller.CalculatePaths(request);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
@@ -60,10 +59,10 @@ namespace CountingPathsApi.Tests
         public async Task GetPaths_InvalidInput_NegativeY_ReturnsBadRequest()
         {
             // Arrange
-            var request = new CoordinateRequest { X = 5, Y = -1 };
+            var request = new CalculatePathsRequest { X = 5, Y = -1 };
 
             // Act
-            var result = await _controller.GetPaths(request);
+            var result = await _controller.CalculatePaths(request);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
@@ -73,10 +72,10 @@ namespace CountingPathsApi.Tests
         public async Task GetPaths_InvalidInput_XGreaterThan1000_ReturnsBadRequest()
         {
             // Arrange
-            var request = new CoordinateRequest { X = 1001, Y = 5 };
+            var request = new CalculatePathsRequest { X = 1001, Y = 5 };
 
             // Act
-            var result = await _controller.GetPaths(request);
+            var result = await _controller.CalculatePaths(request);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);
@@ -86,10 +85,10 @@ namespace CountingPathsApi.Tests
         public async Task GetPaths_InvalidInput_YGreaterThan1000_ReturnsBadRequest()
         {
             // Arrange
-            var request = new CoordinateRequest { X = 5, Y = 1001 };
+            var request = new CalculatePathsRequest { X = 5, Y = 1001 };
 
             // Act
-            var result = await _controller.GetPaths(request);
+            var result = await _controller.CalculatePaths(request);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result.Result);

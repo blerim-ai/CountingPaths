@@ -2,6 +2,6 @@
 {
     public interface IPathCalculator
     {
-        List<string> GetAllPaths(int X, int Y);
+        List<string> CalculatePaths(int X, int Y);
     }
 }

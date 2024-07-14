@@ -6,7 +6,7 @@ namespace CountingPathsApi.Services
     public class PathCalculator : IPathCalculator
     {
 
-        public List<string> GetAllPaths(int X, int Y)
+        public List<string> CalculatePaths(int X, int Y)
         {
             List<string> validPaths = new List<string>();
             CountPaths(0, 0, X, Y, "", validPaths);
@@ -15,25 +15,34 @@ namespace CountingPathsApi.Services
 
         private void CountPaths(int x, int y, int targetX, int targetY, string path, List<string> validPaths)
         {
-            if (path.EndsWith("EEEN") || path.EndsWith("NNNE"))
-            {
-                return;
-            }
+            
+                if (path.EndsWith("EEEN") || path.EndsWith("NNNE"))
+                {
+                    return;
+                }
 
-            if (x == targetX && y == targetY)
-            {
-                validPaths.Add(path);
-                return;
-            }
+                if (x == targetX && y == targetY)
+                {
+                    validPaths.Add(path);
+                    return;
+                }
 
-            if (x < targetX)
+            try
             {
-                CountPaths(x + 1, y, targetX, targetY, path + "E", validPaths);
-            }
+                if (x < targetX)
+                {
+                    CountPaths(x + 1, y, targetX, targetY, path + "E", validPaths);
+                }
 
-            if (y < targetY)
+                if (y < targetY)
+                {
+                    CountPaths(x, y + 1, targetX, targetY, path + "N", validPaths);
+                }
+            }
+            catch (StackOverflowException soe)
             {
-                CountPaths(x, y + 1, targetX, targetY, path + "N", validPaths);
+                Console.WriteLine($"Stack overflow occurred: {soe.Message}");
+                throw; 
             }
         }
     }

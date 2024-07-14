@@ -5,7 +5,7 @@ using MediatR;
 
 namespace CountingPathsApi.Handlers
 {
-    public class GetPathsHandler : IRequestHandler<GetPathsQueryRequest, PathResponse>
+    public class GetPathsHandler : IRequestHandler<CalculatePathsRequest, CalculatePathsResponse>
     {
         private readonly IPathCalculator _pathCalculator;
 
@@ -14,10 +14,21 @@ namespace CountingPathsApi.Handlers
             _pathCalculator = pathCalculator;
         }
 
-        public Task<PathResponse> Handle(GetPathsQueryRequest request, CancellationToken cancellationToken)
+        public Task<CalculatePathsResponse> Handle(CalculatePathsRequest request, CancellationToken cancellationToken)
         {
-            var paths = _pathCalculator.GetAllPaths(request.CoordinateRequest.X, request.CoordinateRequest.Y);
-            var response = new PathResponse
+            if (request is null)
+            {
+                return Task.FromResult<CalculatePathsResponse>(null);
+            }
+
+            var paths = _pathCalculator.CalculatePaths(request.X, request.Y);
+
+            if (paths is null)
+            {
+                return Task.FromResult<CalculatePathsResponse>(null);
+            }
+
+            var response = new CalculatePathsResponse
             {
                 NumberOfPaths = paths.Count,
                 Paths = paths

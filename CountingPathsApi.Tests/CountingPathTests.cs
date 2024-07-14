@@ -22,7 +22,7 @@ namespace CountingPathsApi.Tests
             var expectedPaths = new List<string> { "EENN", "ENEN", "ENNE", "NEEN", "NENE", "NNEE" };
 
             // Act
-            var result = _pathCalculator.GetAllPaths(x, y);
+            var result = _pathCalculator.CalculatePaths(x, y);
 
             // Assert
             Assert.That(result.Count, Is.EqualTo(6));
@@ -38,7 +38,7 @@ namespace CountingPathsApi.Tests
             var expectedPath = new List<string> { "NNNNNNN" };
 
             // Act
-            var result = _pathCalculator.GetAllPaths(x, y);
+            var result = _pathCalculator.CalculatePaths(x, y);
 
             // Assert
             Assert.That(result.Count, Is.EqualTo(1));
@@ -54,7 +54,7 @@ namespace CountingPathsApi.Tests
             var expectedPath = new List<string> { "" };
 
             // Act
-            var result = _pathCalculator.GetAllPaths(x, y);
+            var result = _pathCalculator.CalculatePaths(x, y);
 
             // Assert
             Assert.That(result.Count, Is.EqualTo(1));
@@ -69,7 +69,7 @@ namespace CountingPathsApi.Tests
             int y = 3;
 
             // Act
-            var result = _pathCalculator.GetAllPaths(x, y);
+            var result = _pathCalculator.CalculatePaths(x, y);
 
             // Assert
             Assert.IsTrue(result.All(path => !path.Contains("EEEN") && !path.Contains("NNNE")));

@@ -1,9 +1,6 @@
 using CountingPathsApi.Handlers;
 using CountingPathsApi.Interfaces;
-using CountingPathsApi.Models;
-
 using CountingPathsApi.Services;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

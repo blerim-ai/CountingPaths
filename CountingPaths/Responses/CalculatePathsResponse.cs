@@ -1,6 +1,6 @@
 ﻿namespace CountingPathsApi.Models
 {
-    public class PathResponse
+    public class CalculatePathsResponse
     {
         public int NumberOfPaths { get; set; }
         public List<string>? Paths { get; set; }
