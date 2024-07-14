@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CountingPathsApi.Core", "CountingPaths\CountingPathsApi.Core.csproj", "{AEC629A0-46BD-4FC4-9A36-8E6CA2201628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountingPathsApi.Tests", "CountingPathsApi.Tests\CountingPathsApi.Tests.csproj", "{F8277D2F-0F32-479E-B1CF-7EFE5349BAE8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AEC629A0-46BD-4FC4-9A36-8E6CA2201628} = {AEC629A0-46BD-4FC4-9A36-8E6CA2201628}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEC629A0-46BD-4FC4-9A36-8E6CA2201628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC629A0-46BD-4FC4-9A36-8E6CA2201628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC629A0-46BD-4FC4-9A36-8E6CA2201628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC629A0-46BD-4FC4-9A36-8E6CA2201628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8277D2F-0F32-479E-B1CF-7EFE5349BAE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8277D2F-0F32-479E-B1CF-7EFE5349BAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8277D2F-0F32-479E-B1CF-7EFE5349BAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8277D2F-0F32-479E-B1CF-7EFE5349BAE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DDE6787-DD6D-4848-BDDE-80371CA86230}
+	EndGlobalSection
+EndGlobal
